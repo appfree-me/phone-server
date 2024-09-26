@@ -2,6 +2,8 @@ version: '3'
 
 services:
   tele:
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     build: .
     network_mode: bridge                    # Only here to help testing
 #    cap_add:
@@ -14,6 +16,8 @@ services:
       - "5060:5060"                         # SIP TCP port
       - "5061:5061"                         # SIP TLS port
       - "10000-10099:10000-10099/udp"       # RTP ports
+      - "8088:8088" # Asterisk ARI
+      - "5038:5038" # Asterisk ARI
 #    environment:
 #      - SYSLOG_LEVEL=${SYSLOG_LEVEL-4}      # Logging
 #      - HOSTNAME=${TELE_SRV-tele}.${DOMAIN-docker.localhost}
@@ -21,7 +25,7 @@ services:
 #      - PULSE_COOKIE=/run/pulse/cookie      # Use host audio
 #      - WEBSMSD_PORT=${WEBSMSD_PORT-80}     # WEBSMSD internal port
     volumes:
-      - ./tele-conf:/srv
+      - ./build/tele-conf:/srv
 #      - ./pulse:/run/pulse:rshared          # Use host audio
       - /etc/localtime:/etc/localtime:ro    # Use host timezone
 
