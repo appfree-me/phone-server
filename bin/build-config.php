@@ -10,7 +10,7 @@ $dotenv->load();
 
 chdir(__DIR__);
 
-system("cp -ru $distDir $buildDir");
+system("cp -ru $distDir/* $buildDir");
 chdir($distDir);
 $templateFiles = array_filter(explode("\n",`find . -name "*.php"`));
 

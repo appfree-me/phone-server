@@ -1,1 +1,9 @@
-ssh -f -Nn -R "localhost:8080" -R 8000:localhost:8000 laurentpichler.com
+# Remote-Port wird auf lokalen Port weitergeleitet:
+#ssh -f -Nn -R "5038:localhost:5038" -R "8080:localhost:8080" -R 8000:localhost:8000 laurentpichler.com
+
+# Lokaler Port wird auf Remote-Port weitergeleitet
+#ssh -f -Nn -L 8080:localhost:8080 -L 5038:localhost:5038 -L 8000:localhost:8000 -L 8088:localhost:8088 laurentpichler.com
+
+
+# -f option bewirkt, dass autossh mehrmals im hintergrund laeuft, auch wenn das forwarding nicht zustandekommt, daher mit nohup 
+nohup autossh  -Nn -L 8080:localhost:8080 -L 5038:localhost:5038 -L 8000:localhost:8000 -L 8088:localhost:8088 laurentpichler.com -o ExitOnForwardFailure=yes &
