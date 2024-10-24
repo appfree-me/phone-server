@@ -1591,54 +1591,36 @@ type=transport
 protocol=udp    ;udp,tcp,tls,ws,wss,flow
 bind=0.0.0.0
 
+
+[anonymous]
+type=endpoint
+context=anonymous
+disallow=all
+allow=speex,g726,g722,ilbc,gsm,alaw
+
 [mytrunk]
 type=registration
 transport=transport-udp
 outbound_auth=mytrunk_auth
-server_uri=sip:sipconnect.sipgate.de            
-client_uri=sip:5036831t0@sipgate.de
+server_uri=sip:<?= $_ENV["SIP_HOST"] ?>
             
-contact_user=5036831t0            
+client_uri=sip:<?= $_ENV["SIP_USERNAME"] ?>@sipgate.de
+            
+contact_user=<?= $_ENV["SIP_USERNAME"] ?>
+            
 retry_interval=60
 forbidden_retry_interval=600
 expiration=3600
 line=yes
 endpoint=endpoint1
 
-;[anonymous]
-;type=endpoint
-;context=anonymous
-;disallow=all
-;allow=speex,g726,g722,ilbc,gsm,alaw
-
-[6001]
-type=endpoint
-context=default
-disallow=all
-allow=ulaw
-transport=transport-udp
-auth=auth6001
-aors=017662328758
-
-[endpoint1]
-type = endpoint
-context = context1
-dtmf_mode = rfc4733
-disallow = all
-allow = alaw
-rtp_symmetric = yes
-force_rport = yes
-rewrite_contact = yes
-timers = yes
-from_user = 017662328758
-from_domain = sipconnect.sipgate.de
-language = en
-
-
 [mytrunk_auth]
 type=auth
 auth_type=userpass
-password=qtgRu4mKy4o3            
-username=5036831t0            
-realm=sipconnect.sipgate.de            
+password=<?= $_ENV["SIP_SECRET"] ?>
+            
+username=<?= $_ENV["SIP_USERNAME"] ?>
+            
+realm=<?= $_ENV["SIP_FROMDOMAIN"] ?>
+            
             
