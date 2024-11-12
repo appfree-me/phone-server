@@ -7,3 +7,27 @@ channel_setup_fwd_listener_tcpip: cannot listen to port: 8000
 bind [127.0.0.1]:8088: Address already in use
 channel_setup_fwd_listener_tcpip: cannot listen to port: 8088
 Could not request local forwarding.
+ssh: Could not resolve hostname laurentpichler.com: Name or service not known
+ssh: Could not resolve hostname laurentpichler.com: Name or service not known
+ssh: Could not resolve hostname laurentpichler.com: Name or service not known
+ssh: Could not resolve hostname laurentpichler.com: Name or service not known
+ssh: Could not resolve hostname laurentpichler.com: Name or service not known
+ssh: Could not resolve hostname laurentpichler.com: Name or service not known
+ssh: Could not resolve hostname laurentpichler.com: Name or service not known
+ssh: Could not resolve hostname laurentpichler.com: Name or service not known
+ssh: Could not resolve hostname laurentpichler.com: Name or service not known
+ssh: Could not resolve hostname laurentpichler.com: Name or service not known
+ssh: Could not resolve hostname laurentpichler.com: Name or service not known
+ssh: Could not resolve hostname laurentpichler.com: Name or service not known
+ssh: Could not resolve hostname laurentpichler.com: Name or service not known
+ssh: Could not resolve hostname laurentpichler.com: Name or service not known
+ssh: Could not resolve hostname laurentpichler.com: Name or service not known
+ssh: Could not resolve hostname laurentpichler.com: Name or service not known
+ssh: Could not resolve hostname laurentpichler.com: Name or service not known
+Error: remote port forwarding failed for listen port 52025
+Error: remote port forwarding failed for listen port 52025
+Error: remote port forwarding failed for listen port 52025
+Error: remote port forwarding failed for listen port 52025
+Error: remote port forwarding failed for listen port 52025
+Error: remote port forwarding failed for listen port 52025
+Error: remote port forwarding failed for listen port 52025
