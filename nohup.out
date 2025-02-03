@@ -123,3 +123,12 @@ ssh: connect to host laurentpichler.com port 36487: Connection refused
 ssh: connect to host laurentpichler.com port 36487: Connection refused
 ssh: connect to host laurentpichler.com port 36487: Connection refused
 ssh: connect to host laurentpichler.com port 36487: Connection refused
+bind [127.0.0.1]:8080: Address already in use
+channel_setup_fwd_listener_tcpip: cannot listen to port: 8080
+bind [127.0.0.1]:5038: Address already in use
+channel_setup_fwd_listener_tcpip: cannot listen to port: 5038
+bind [127.0.0.1]:8000: Address already in use
+channel_setup_fwd_listener_tcpip: cannot listen to port: 8000
+bind [127.0.0.1]:8088: Address already in use
+channel_setup_fwd_listener_tcpip: cannot listen to port: 8088
+Could not request local forwarding.

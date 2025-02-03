@@ -2,3 +2,4 @@
 vendor
 build
 *.swp
+/bin/nohup.out
