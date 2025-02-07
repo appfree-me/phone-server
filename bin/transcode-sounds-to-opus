@@ -1,0 +1,7 @@
+#!/bin/bash
+set -e
+
+cd "$(dirname "$0")"/../dist/usr/share/asterisk/sounds/en_US_f_Allison
+
+
+for f in *.mp3; do ffmpeg -loglevel error -y -i "$f" -c:a libopus "${f%.*}.opus" ; done
