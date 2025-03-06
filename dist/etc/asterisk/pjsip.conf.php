@@ -742,7 +742,7 @@
                                     ; the specified address. (default: "no")
 ;tone_zone=     ; Set which country s indications to use for channels created
                 ; for this endpoint (default: "")
-;language=      ; Set the default language to use for channels created for this
+;language=de      ; Set the default language to use for channels created for this
                 ; endpoint (default: "")
 ;one_touch_recording=no ; Determines whether one touch recording is allowed for
                         ; this endpoint (default: "no")
@@ -1586,7 +1586,7 @@
 ; be set. The "endpoint" option specifies what endpoint the incoming call should be
 ; associated with.
 
-[transport-udp]
+[transport-udp-tcp]
 type=transport
 protocol=udp    ;udp,tcp,tls,ws,wss,flow
 bind=0.0.0.0
@@ -1600,9 +1600,9 @@ allow=speex,g726,g722,ilbc,gsm,alaw
 
 [mytrunk]
 type=registration
-transport=transport-udp
+transport=transport-udp-tcp
 outbound_auth=mytrunk_auth
-server_uri=sip:<?= $_ENV["SIP_HOST"] ?>
+server_uri=sip:<?= $_ENV["SIP_HOST"] ?>;transport=tcp
             
 client_uri=sip:<?= $_ENV["SIP_USERNAME"] ?>@sipgate.de
             
