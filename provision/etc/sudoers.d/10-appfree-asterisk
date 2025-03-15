@@ -1,0 +1,1 @@
+appfree    ALL=(ALL) NOPASSWD: /bin/systemctl restart asterisk

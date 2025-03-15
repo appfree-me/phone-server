@@ -1,0 +1,115 @@
+*filter
+:ufw-user-input - [0:0]
+:ufw-user-output - [0:0]
+:ufw-user-forward - [0:0]
+:ufw-before-logging-input - [0:0]
+:ufw-before-logging-output - [0:0]
+:ufw-before-logging-forward - [0:0]
+:ufw-user-logging-input - [0:0]
+:ufw-user-logging-output - [0:0]
+:ufw-user-logging-forward - [0:0]
+:ufw-after-logging-input - [0:0]
+:ufw-after-logging-output - [0:0]
+:ufw-after-logging-forward - [0:0]
+:ufw-logging-deny - [0:0]
+:ufw-logging-allow - [0:0]
+:ufw-user-limit - [0:0]
+:ufw-user-limit-accept - [0:0]
+### RULES ###
+
+### tuple ### allow udp 12194 0.0.0.0/0 any 0.0.0.0/0 in
+-A ufw-user-input -p udp --dport 12194 -j ACCEPT
+
+### tuple ### allow tcp 36487 0.0.0.0/0 any 0.0.0.0/0 in
+-A ufw-user-input -p tcp --dport 36487 -j ACCEPT
+
+### tuple ### allow tcp 80 0.0.0.0/0 any 0.0.0.0/0 in
+-A ufw-user-input -p tcp --dport 80 -j ACCEPT
+
+### tuple ### allow tcp 443 0.0.0.0/0 any 0.0.0.0/0 in
+-A ufw-user-input -p tcp --dport 443 -j ACCEPT
+
+### tuple ### allow any 3000 0.0.0.0/0 any 0.0.0.0/0 in
+-A ufw-user-input -p tcp --dport 3000 -j ACCEPT
+-A ufw-user-input -p udp --dport 3000 -j ACCEPT
+
+### tuple ### allow tcp 51413 0.0.0.0/0 any 0.0.0.0/0 in
+-A ufw-user-input -p tcp --dport 51413 -j ACCEPT
+
+### tuple ### allow tcp any 0.0.0.0/0 any 217.10.77.0/24 in
+-A ufw-user-input -p tcp -s 217.10.77.0/24 -j ACCEPT
+
+### tuple ### allow tcp any 0.0.0.0/0 any 212.9.44.0/24 in
+-A ufw-user-input -p tcp -s 212.9.44.0/24 -j ACCEPT
+
+### tuple ### allow udp 15000:30000 0.0.0.0/0 any 217.10.77.0/24 in
+-A ufw-user-input -p udp -m multiport --dports 15000:30000 -s 217.10.77.0/24 -j ACCEPT
+
+### tuple ### allow udp 15000:30000 0.0.0.0/0 any 212.9.44.0/24 in
+-A ufw-user-input -p udp -m multiport --dports 15000:30000 -s 212.9.44.0/24 -j ACCEPT
+
+### tuple ### allow tcp 48600 0.0.0.0/0 any 0.0.0.0/0 in
+-A ufw-user-input -p tcp --dport 48600 -j ACCEPT
+
+### tuple ### allow any any 0.0.0.0/0 any 217.10.64.0/20 in
+-A ufw-user-input -s 217.10.64.0/20 -j ACCEPT
+
+### tuple ### allow any any 0.0.0.0/0 any 217.116.112.0/20 in
+-A ufw-user-input -s 217.116.112.0/20 -j ACCEPT
+
+### tuple ### allow any any 0.0.0.0/0 any 212.9.32.0/19 in
+-A ufw-user-input -s 212.9.32.0/19 -j ACCEPT
+
+### tuple ### allow any any 0.0.0.0/0 5060 212.9.44.242 in
+-A ufw-user-input -p tcp -s 212.9.44.242 --sport 5060 -j ACCEPT
+-A ufw-user-input -p udp -s 212.9.44.242 --sport 5060 -j ACCEPT
+
+### tuple ### allow any any 0.0.0.0/0 5060 212.9.44.244 in
+-A ufw-user-input -p tcp -s 212.9.44.244 --sport 5060 -j ACCEPT
+-A ufw-user-input -p udp -s 212.9.44.244 --sport 5060 -j ACCEPT
+
+### tuple ### allow any any 0.0.0.0/0 5060 217.10.77.242 in
+-A ufw-user-input -p tcp -s 217.10.77.242 --sport 5060 -j ACCEPT
+-A ufw-user-input -p udp -s 217.10.77.242 --sport 5060 -j ACCEPT
+
+### tuple ### allow any any 0.0.0.0/0 5060 217.10.77.244 in
+-A ufw-user-input -p tcp -s 217.10.77.244 --sport 5060 -j ACCEPT
+-A ufw-user-input -p udp -s 217.10.77.244 --sport 5060 -j ACCEPT
+
+### tuple ### allow any any 0.0.0.0/0 5061 212.9.44.242 in
+-A ufw-user-input -p tcp -s 212.9.44.242 --sport 5061 -j ACCEPT
+-A ufw-user-input -p udp -s 212.9.44.242 --sport 5061 -j ACCEPT
+
+### tuple ### allow any any 0.0.0.0/0 5061 212.9.44.244 in
+-A ufw-user-input -p tcp -s 212.9.44.244 --sport 5061 -j ACCEPT
+-A ufw-user-input -p udp -s 212.9.44.244 --sport 5061 -j ACCEPT
+
+### tuple ### allow any any 0.0.0.0/0 5061 217.10.77.242 in
+-A ufw-user-input -p tcp -s 217.10.77.242 --sport 5061 -j ACCEPT
+-A ufw-user-input -p udp -s 217.10.77.242 --sport 5061 -j ACCEPT
+
+### tuple ### allow any any 0.0.0.0/0 5061 217.10.77.244 in
+-A ufw-user-input -p tcp -s 217.10.77.244 --sport 5061 -j ACCEPT
+-A ufw-user-input -p udp -s 217.10.77.244 --sport 5061 -j ACCEPT
+
+### tuple ### allow udp 5060 0.0.0.0/0 any 217.10.79.9 in
+-A ufw-user-input -p udp --dport 5060 -s 217.10.79.9 -j ACCEPT
+
+### tuple ### allow udp 5060 0.0.0.0/0 any 217.10.68.150 in
+-A ufw-user-input -p udp --dport 5060 -s 217.10.68.150 -j ACCEPT
+
+### END RULES ###
+
+### LOGGING ###
+-A ufw-after-logging-input -j LOG --log-prefix "[UFW BLOCK] " -m limit --limit 3/min --limit-burst 10
+-I ufw-logging-deny -m conntrack --ctstate INVALID -j RETURN -m limit --limit 3/min --limit-burst 10
+-A ufw-logging-deny -j LOG --log-prefix "[UFW BLOCK] " -m limit --limit 3/min --limit-burst 10
+-A ufw-logging-allow -j LOG --log-prefix "[UFW ALLOW] " -m limit --limit 3/min --limit-burst 10
+### END LOGGING ###
+
+### RATE LIMITING ###
+-A ufw-user-limit -m limit --limit 3/minute -j LOG --log-prefix "[UFW LIMIT BLOCK] "
+-A ufw-user-limit -j REJECT
+-A ufw-user-limit-accept -j ACCEPT
+### END RATE LIMITING ###
+COMMIT

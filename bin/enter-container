@@ -1,2 +1,0 @@
-a=$(docker ps | grep phone-server_tele | cut -f1 -d\ )
-docker exec -t -i $a /bin/bash

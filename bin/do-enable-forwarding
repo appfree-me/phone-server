@@ -1,11 +1,21 @@
 #!/bin/bash
+
 #
-#
+# For developing locally with asterisk running on DEPLOYHOST
+# Sets up necessary port forwarding so that locally running appfree can connect to
+# asterisk running on DEPLOYHOST
+# run this script on your development machine
+
+cd "$(dirname "$0")"/.. || exit
+
+source bin/load-env
+
+
 # Remote-Port wird auf lokalen Port weitergeleitet:
-#ssh -f -Nn -R "5038:localhost:5038" -R "8080:localhost:8080" -R 8000:localhost:8000 laurentpichler.com
+#ssh -f -Nn -R "5038:localhost:5038" -R "8080:localhost:8080" -R 8000:localhost:8000 "$DEPLOYUSER@$DEPLOYHOST"
 
 # Lokaler Port wird auf Remote-Port weitergeleitet
-#ssh -f -Nn -L 8080:localhost:8080 -L 5038:localhost:5038 -L 8000:localhost:8000 -L 8088:localhost:8088 laurentpichler.com
+#ssh -f -Nn -L 8080:localhost:8080 -L 5038:localhost:5038 -L 8000:localhost:8000 -L 8088:localhost:8088 "$DEPLOYUSER@$DEPLOYHOST"
 
 
 # -f option bewirkt, dass autossh mehrmals im hintergrund laeuft, auch wenn das forwarding nicht zustandekommt, daher mit nohup 
@@ -14,7 +24,7 @@
 # 5038:
 # 8088: ari anfragen an phoneserver (rest)
 # 33060: Mysql
-autossh  -Nn -L 33060:localhost:3306 -L 8080:localhost:8080 -L 5038:localhost:5038 -L 8000:localhost:8000 -L 8088:localhost:8088 laurentpichler.com -o ExitOnForwardFailure=yes &
+autossh  -Nn -L 33060:localhost:3306 -L 8080:localhost:8080 -L 5038:localhost:5038 -L 8000:localhost:8000 -L 8088:localhost:8088 "$DEPLOYUSER@$DEPLOYHOST" -o ExitOnForwardFailure=yes &
 
 # Traffic weiterleiten 8089->8088 und auf konsole ausgeben
 socat -v tcp-l:8089,fork,reuseaddr tcp:127.0.0.1:8088 | cat -v

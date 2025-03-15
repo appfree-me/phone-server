@@ -1,0 +1,53 @@
+#!/bin/bash
+
+## run this script on the server you want to provision
+
+if [ ! "$UID" -eq "0" ]; then
+  echo Please run as root.
+  exit 1
+fi
+
+
+cd "$(dirname "$0")"/..
+source bin/load-env
+
+
+## install required packages
+apt -y install php8.3-xdebug php8.3-xml asterisk asterisk-config asterisk-core-sounds-en asterisk-modules composer ffmpeg
+
+
+## check if user is already existing
+deployuid=$(id -u "$DEPLOYUSER" 2>/dev/null)
+
+## create user for appfree
+if [[ -z "$deployuid" ]]; then
+  echo Adding User "$DEPLOYUSER"
+  adduser "$DEPLOYUSER"
+  usermod -a -G asterisk "$DEPLOYUSER"
+fi
+
+## setup directory structure for phone-server deploy
+
+mkdir -p /srv/phone-server
+chgrp asterisk /srv/phone-server
+chmod g+rwx /srv/phone-server
+
+rm -rf /etc/asterisk
+ln -s /srv/phone-server/etc/asterisk /etc/asterisk
+
+chgrp asterisk /usr/share/asterisk/sounds/en_US_f_Allison/
+chmod -R g+w /usr/share/asterisk/sounds/en_US_f_Allison/
+
+
+## ufw allow ...
+echo Enabling UFW firewall rules to allow appfree/sipgate connections...
+echo "(This will overwrite exiting rules)"
+cp -i provision/etc/ufw/user.rules /etc/ufw/
+cp -i provision/etc/sudoers.d/* /etc/sudoers.d
+
+
+
+echo Enabling \& starting asterisk...
+
+systemctl enable asterisk
+systemctl start asterisk

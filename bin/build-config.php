@@ -20,7 +20,7 @@ foreach ($templateFiles as $file) {
 
 
 function get_include_contents($filename) {
-    ob_start();
+        ob_start();
         require $filename;
         return ob_get_clean();
 }
