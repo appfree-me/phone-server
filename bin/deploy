@@ -7,7 +7,7 @@ source bin/load-env
 mkdir -p build
 
 php bin/build-config.php && \
-rsync -zr --chown=asterisk:asterisk -e ssh build/  "$DEPLOYUSER@$DEPLOYHOST":/srv/phone-server && \
+rsync -zr --chown=asterisk:asterisk -e ssh build/  "$appfree@$DEPLOYHOST":/srv/phone-server && \
 bin/transcode-sounds-to-opus && \
-ssh "$DEPLOYUSER@$DEPLOYHOST" "cp /srv/phone-server/usr/share/asterisk/sounds/en_US_f_Allison/*.opus /usr/share/asterisk/sounds/en_US_f_Allison"  && \
-ssh "$DEPLOYUSER@$DEPLOYHOST" "sudo /bin/systemctl restart asterisk"
+ssh "$appfree@$DEPLOYHOST" "cp /srv/phone-server/usr/share/asterisk/sounds/en_US_f_Allison/*.opus /usr/share/asterisk/sounds/en_US_f_Allison"  && \
+ssh "$appfree@$DEPLOYHOST" "sudo /bin/systemctl restart asterisk"
