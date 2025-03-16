@@ -660,24 +660,24 @@ exten => _X.,1,Macro(page,SIP/${EXTEN})
 ; v...context
 [anonymous]
 <?php
-if ($_ENV["PHONE_NUMBER_LOCAL_INSTANCE"]) {
+if ($_ENV["PHONE_NUMBER_APPFREE_LOCAL"]) {
 ?>
-exten => <?= $_ENV["PHONE_NUMBER_LOCAL_INSTANCE"] ?>,1,Noop()
+exten => <?= $_ENV["PHONE_NUMBER_APPFREE_LOCAL"] ?>,1,Noop()
 same => n,Stasis(appfree-local)
 same => n,Hangup()
 <?php
 }
-if ($_ENV["PHONE_NUMBER_STAGING_INSTANCE"]) {
+if ($_ENV["PHONE_NUMBER_APPFREE_STAGING"]) {
 ?>
-exten => <?= $_ENV["PHONE_NUMBER_STAGING_INSTANCE"] ?>,1,Noop()
+exten => <?= $_ENV["PHONE_NUMBER_APPFREE_STAGING"] ?>,1,Noop()
 same => n,Stasis(appfree-staging)
 same => n,Hangup()
 <?php
 }
-if ($_ENV["PHONE_NUMBER_PROD_INSTANCE"]) {
+if ($_ENV["PHONE_NUMBER_APPFREE_PROD"]) {
 
 ?>
-exten => <?= $_ENV["PHONE_NUMBER_PROD_INSTANCE"] ?>,1,Noop()
+exten => <?= $_ENV["PHONE_NUMBER_APPFREE_PROD"] ?>,1,Noop()
 same => n,Stasis(appfree-prod)
 same => n,Hangup()
 <?php
