@@ -13,11 +13,11 @@ source bin/load-env
 
 
 ## install required packages
-apt -y install php8.3-xdebug php8.3-xml asterisk asterisk-config asterisk-core-sounds-en asterisk-modules composer ffmpeg
+apt -y install php8.3-xdebug php8.3-xml asterisk asterisk-config asterisk-core-sounds-en asterisk-modules composer ffmpeg socat
 
 
 ## check if user is already existing
-deployuid=$(id -u "apfree" 2>/dev/null)
+deployuid=$(id -u "appfree" 2>/dev/null)
 
 ## create user for appfree
 if [[ -z "$deployuid" ]]; then
