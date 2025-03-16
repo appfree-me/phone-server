@@ -44,7 +44,8 @@ echo Enabling UFW firewall rules to allow appfree/sipgate connections...
 echo "(This will overwrite exiting rules)"
 cp -i provision/etc/ufw/user.rules /etc/ufw/
 cp -i provision/etc/sudoers.d/* /etc/sudoers.d
-
+cp -i provision/etc/systemd/system/log-and-forward-tcp-8089-to-8088.service /etc/systemd/system/
+systemctl --enable log-and-forward-tcp-8089-to-8088.service
 
 
 echo Enabling \& starting asterisk...

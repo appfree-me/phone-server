@@ -1,0 +1,13 @@
+[Unit]
+Description="8089/tcp => 8088/tcp"
+After=network.target
+
+[Service]
+User=appfree
+Group=appfree
+Environment=LANG=en_US.UTF-8,LC_ALL=en_US.UTF-8
+ExecStart=/home/appfree/bin/log-and-forward-8089-to-8088
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
