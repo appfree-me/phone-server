@@ -17,25 +17,6 @@
 :ufw-user-limit-accept - [0:0]
 ### RULES ###
 
-### tuple ### allow udp 12194 0.0.0.0/0 any 0.0.0.0/0 in
--A ufw-user-input -p udp --dport 12194 -j ACCEPT
-
-### tuple ### allow tcp 36487 0.0.0.0/0 any 0.0.0.0/0 in
--A ufw-user-input -p tcp --dport 36487 -j ACCEPT
-
-### tuple ### allow tcp 80 0.0.0.0/0 any 0.0.0.0/0 in
--A ufw-user-input -p tcp --dport 80 -j ACCEPT
-
-### tuple ### allow tcp 443 0.0.0.0/0 any 0.0.0.0/0 in
--A ufw-user-input -p tcp --dport 443 -j ACCEPT
-
-### tuple ### allow any 3000 0.0.0.0/0 any 0.0.0.0/0 in
--A ufw-user-input -p tcp --dport 3000 -j ACCEPT
--A ufw-user-input -p udp --dport 3000 -j ACCEPT
-
-### tuple ### allow tcp 51413 0.0.0.0/0 any 0.0.0.0/0 in
--A ufw-user-input -p tcp --dport 51413 -j ACCEPT
-
 ### tuple ### allow tcp any 0.0.0.0/0 any 217.10.77.0/24 in
 -A ufw-user-input -p tcp -s 217.10.77.0/24 -j ACCEPT
 
@@ -47,9 +28,6 @@
 
 ### tuple ### allow udp 15000:30000 0.0.0.0/0 any 212.9.44.0/24 in
 -A ufw-user-input -p udp -m multiport --dports 15000:30000 -s 212.9.44.0/24 -j ACCEPT
-
-### tuple ### allow tcp 48600 0.0.0.0/0 any 0.0.0.0/0 in
--A ufw-user-input -p tcp --dport 48600 -j ACCEPT
 
 ### tuple ### allow any any 0.0.0.0/0 any 217.10.64.0/20 in
 -A ufw-user-input -s 217.10.64.0/20 -j ACCEPT
