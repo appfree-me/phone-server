@@ -1,5 +1,6 @@
 #!/bin/bash
 
 cd "$(dirname "$0")"
+set -x
 # so everything can be stopped with ctrl-c
 ./do-enable-forwarding
