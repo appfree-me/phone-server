@@ -76,6 +76,9 @@
 ### tuple ### allow udp 5060 0.0.0.0/0 any 217.10.68.150 in
 -A ufw-user-input -p udp --dport 5060 -s 217.10.68.150 -j ACCEPT
 
+### tuple ### allow tcp 22 0.0.0.0/0 any 0.0.0.0/0 in
+-A ufw-user-input -p tcp --dport 22 -j ACCEPT
+
 ### END RULES ###
 
 ### LOGGING ###

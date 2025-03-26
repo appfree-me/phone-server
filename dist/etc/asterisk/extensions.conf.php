@@ -663,14 +663,14 @@ exten => _X.,1,Macro(page,SIP/${EXTEN})
 if ($_ENV["PHONE_NUMBER_APPFREE_LOCAL"]) {
 ?>
 exten => <?= $_ENV["PHONE_NUMBER_APPFREE_LOCAL"] ?>,1,Noop()
-same => n,Stasis(appfree-local)
+same => n,Stasis(appfree-app_local)
 same => n,Hangup()
 <?php
 }
 if ($_ENV["PHONE_NUMBER_APPFREE_STAGING"]) {
 ?>
 exten => <?= $_ENV["PHONE_NUMBER_APPFREE_STAGING"] ?>,1,Noop()
-same => n,Stasis(appfree-staging)
+same => n,Stasis(appfree-app_staging)
 same => n,Hangup()
 <?php
 }
@@ -678,7 +678,7 @@ if ($_ENV["PHONE_NUMBER_APPFREE_PROD"]) {
 
 ?>
 exten => <?= $_ENV["PHONE_NUMBER_APPFREE_PROD"] ?>,1,Noop()
-same => n,Stasis(appfree-prod)
+same => n,Stasis(appfree-app_prod)
 same => n,Hangup()
 <?php
 }
